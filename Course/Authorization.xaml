@@ -1,4 +1,4 @@
-﻿<Page x:Class="Course.Authorization"
+﻿<Page x:Class="Course.Authorization" Background="CornflowerBlue"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,11 +9,11 @@
       Title="Authorization">
 
     <Grid>
-        <Button Content="Войти" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <TextBox x:Name="login" HorizontalAlignment="Left" Margin="379,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="login" HorizontalAlignment="Left" Margin="379,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyUp="ChangedLogOrPass"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="302,67,0,0" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="379,142,0,0" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="379,142,0,0" VerticalAlignment="Top" Width="120" KeyUp="ChangedLogOrPass"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="302,143,0,0" VerticalAlignment="Top"/>
-        <Button Content="Регистрация" HorizontalAlignment="Center" Margin="0,308,0,0" VerticalAlignment="Top" Click="GotoRegistration"/>
+        <Button x:Name="enterButton" Content="Войти" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" IsEnabled="False" Click="Enter"/>
+        <Button x:Name="switchButton" Content="Регистрация" HorizontalAlignment="Center" Margin="0,308,0,0" VerticalAlignment="Top" Click="SwitchRegAuth"/>
     </Grid>
 </Page>

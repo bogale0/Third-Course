@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Course"
         mc:Ignorable="d"
-        Title="Занятость аудиторий" Height="450" Width="800">
+        Title="Занятость аудиторий" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800">
     <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
 </Window>

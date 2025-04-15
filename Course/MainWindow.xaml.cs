@@ -23,6 +23,7 @@ namespace Course
         public MainWindow()
         {
             InitializeComponent();
+            new courseEntities().User.FirstOrDefault();
             MainFrame.Navigate(new Authorization());
         }
     }

@@ -27,3 +27,8 @@ C:\Users\aleks\Documents\Files\Курсовая 3\Course\Course\obj\Debug\Author
 C:\Users\aleks\Documents\Files\Курсовая 3\Course\Course\obj\Debug\Registration.g.cs
 C:\Users\aleks\Documents\Files\Курсовая 3\Course\Course\obj\Debug\Authorization.baml
 C:\Users\aleks\Documents\Files\Курсовая 3\Course\Course\obj\Debug\Registration.baml
+C:\Users\aleks\Documents\Files\Курсовая 3\Course\Course\bin\Debug\EntityFramework.dll
+C:\Users\aleks\Documents\Files\Курсовая 3\Course\Course\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aleks\Documents\Files\Курсовая 3\Course\Course\bin\Debug\EntityFramework.xml
+C:\Users\aleks\Documents\Files\Курсовая 3\Course\Course\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aleks\Documents\Files\Курсовая 3\Course\Course\obj\Debug\Course_Content.g.cs
