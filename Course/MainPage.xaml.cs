@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,19 +37,53 @@ namespace Course
             NavigationService.Navigate(new RoomsList());
         }
 
-        private void SaveChanges(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DayAndClassChosen(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void OpenSchedule(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ScheduleEdit());
+        }
+
+        private void DateAndClassChosen(object sender, RoutedEventArgs e)
+        {
+            int @class = classChosen.SelectedIndex;
+            if (!dateChosen.SelectedDate.HasValue || @class == -1)
+            {
+                return;
+            }
+            var date = (DateTime)dateChosen.SelectedDate;
+            using (var db = new courseEntities())
+            {
+                var data = db.Schedule.Where(x => x.date == date && x.@class == @class);
+                if (!data.Any())
+                {
+                    data = db.Schedule.Where(x => x.day == (int)date.DayOfWeek - 1 && x.@class == @class);
+                }
+                table.ItemsSource = data.ToList();
+            }
+        }
+
+        private void SaveChanges(object sender, RoutedEventArgs e)
+        {
+            int @class = classChosen.SelectedIndex;
+            var date = (DateTime)dateChosen.SelectedDate;
+            using (var db = new courseEntities())
+            {
+                var daySchedule = table.ItemsSource as IEnumerable<Schedule>;
+                if (db.Schedule.Where(x => x.@class == @class && x.date == date).Any())
+                {
+                    foreach (var rowSchedule in daySchedule)
+                    {
+                        db.Entry(rowSchedule).State = EntityState.Modified;
+                    }
+                }
+                else
+                {
+                    foreach (var row in daySchedule)
+                    {
+                        db.Schedule.Add(new Schedule { room = row.room, state = row.state, groupName = row.groupName, teacher = row.teacher, @class = row.@class, date = date });
+                    }
+                }
+                db.SaveChanges();
+            }
         }
     }
 }

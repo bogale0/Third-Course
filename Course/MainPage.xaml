@@ -17,23 +17,22 @@
                 <DataGridTextColumn Header="Преподаватель" Width="150" Binding="{Binding teacher}"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <StackPanel Margin="570,0,94,0" VerticalAlignment="Center">
             <Label Content="Дата" FontWeight="Bold"/>
-            <TextBox x:Name="dateChosen"/>
-            <Label Content="Номер пары:" FontWeight="Bold" Margin="0,10,0,0"/>
-            <ComboBox x:Name="classChosen">
+            <DatePicker x:Name="dateChosen" SelectedDateChanged="DateAndClassChosen"/>
+            <Label Content="Номер пары" FontWeight="Bold" Margin="0,10,0,0"/>
+            <ComboBox x:Name="classChosen" SelectionChanged="DateAndClassChosen">
                 <ComboBoxItem Content="1"/>
                 <ComboBoxItem Content="2"/>
                 <ComboBoxItem Content="3"/>
                 <ComboBoxItem Content="4"/>
                 <ComboBoxItem Content="5"/>
             </ComboBox>
-            <Button Content="Выбрать" Margin="0,20,0,0" Click="DayAndClassChosen"/>
             <Button Content="Сохранить" Margin="0,20,0,0" Click="SaveChanges"/>
             <Button Content="Выйти" Margin="0,40,0,0" Click="ExitAuth"/>
         </StackPanel>
-        
+
         <Menu Margin="0,0,411,356">
             <MenuItem Header="Аудитории" Click="OpenRoomsList"/>
             <MenuItem Header="Расписание" Click="OpenSchedule"/>

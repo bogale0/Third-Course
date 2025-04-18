@@ -33,8 +33,6 @@ namespace Course
 
         private void SaveChanges(object sender, RoutedEventArgs e)
         {
-            byte day = Convert.ToByte(dayChosen.SelectedIndex),
-                @class = Convert.ToByte(classChosen.SelectedIndex);
             using (var db = new courseEntities())
             {
                 var daySchedule = table.ItemsSource as IEnumerable<Schedule>;
