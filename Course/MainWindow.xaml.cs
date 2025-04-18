@@ -24,7 +24,7 @@ namespace Course
         {
             InitializeComponent();
             new courseEntities().User.FirstOrDefault();
-            MainFrame.Navigate(new Authorization());
+            MainFrame.Navigate(new RoomsList());
         }
     }
 }

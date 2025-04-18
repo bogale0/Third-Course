@@ -20,7 +20,7 @@ namespace Course
     /// </summary>
     public partial class Authorization : Page
     {
-        static bool auth = true;
+        bool auth = true;
         public Authorization()
         {
             InitializeComponent();
@@ -68,7 +68,7 @@ namespace Course
                     return;
                 }
                 Session.role = user.role;
-                MessageBox.Show("Успешная авторизация", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new MainPage());
             }
             else
             {
@@ -78,9 +78,10 @@ namespace Course
                     MessageBox.Show("Существует пользователь с таким логином", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                db.User.Add(new User { login = login.Text, password = password.Password, role = 1 });
+                Session.role = 1;
+                db.User.Add(new User { login = login.Text, password = password.Password, role = Session.role });
                 db.SaveChanges();
-                MessageBox.Show("Успешная регистрация", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new MainPage());
             }
         }
     }

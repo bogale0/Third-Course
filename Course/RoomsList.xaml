@@ -1,0 +1,34 @@
+﻿<Page x:Class="Course.RoomsList" Background="CornflowerBlue"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Course"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RoomsList">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="RoomsListView" Margin="290,10,290,10" Width="200" Grid.RowSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Список аудиторий" DisplayMemberBinding="{Binding number}" Width="180"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBox x:Name="newRoom" Grid.Row="2" Width="200" Margin="0,0,0,0"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,10,0,10" HorizontalAlignment="Center">
+            <Button Content="Добавить" Click="AddRoom" Margin="0,0,15,0"/>
+            <Button Content="Удалить" Click="DeleteRoom"/>
+        </StackPanel>
+        <Button Grid.Row="3" Content="Назад" HorizontalAlignment="Right" Click="GoBack"/>
+    </Grid>
+</Page>

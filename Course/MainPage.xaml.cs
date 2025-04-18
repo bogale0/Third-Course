@@ -24,5 +24,26 @@ namespace Course
         {
             InitializeComponent();
         }
+
+        private void ExitAuth(object sender, RoutedEventArgs e)
+        {
+            Session.role = 0;
+            NavigationService.Navigate(new Authorization());
+        }
+
+        private void OpenRoomsList(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RoomsList());
+        }
+
+        private void SaveChanges(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DayAndClassChosen(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
