@@ -23,8 +23,11 @@ namespace Course
         public MainWindow()
         {
             InitializeComponent();
-            new courseEntities().User.FirstOrDefault();
-            MainFrame.Navigate(new RoomsList());
+            using (var db = new courseEntities())
+            {
+                db.User.FirstOrDefault();
+            }
+            MainFrame.Navigate(new ScheduleEdit());
         }
     }
 }

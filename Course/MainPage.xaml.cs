@@ -45,5 +45,10 @@ namespace Course
         {
 
         }
+
+        private void OpenSchedule(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ScheduleEdit());
+        }
     }
 }

@@ -58,8 +58,7 @@ namespace Course
 
         private void Enter(object sender, RoutedEventArgs e)
         {
-            courseEntities db = new courseEntities();
-            if (auth)
+            using (var db = new courseEntities()) if (auth)
             {
                 var user = db.User.FirstOrDefault(el => el.login == login.Text && el.password == password.Password);
                 if (user == null)

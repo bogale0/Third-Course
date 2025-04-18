@@ -13,8 +13,8 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="room" Type="int" Nullable="false" />
     <Property Name="state" Type="char" MaxLength="8" Nullable="false" />
-    <Property Name="groupName" Type="char" MaxLength="4" Nullable="false" />
-    <Property Name="teacher" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="groupName" Type="char" MaxLength="4" />
+    <Property Name="teacher" Type="varchar" MaxLength="20" />
     <Property Name="class" Type="tinyint" Nullable="false" />
     <Property Name="date" Type="date" />
     <Property Name="day" Type="tinyint" />

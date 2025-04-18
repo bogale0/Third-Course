@@ -106,6 +106,9 @@
     <Compile Include="Schedule.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleEdit.xaml.cs">
+      <DependentUpon>ScheduleEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -140,6 +143,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RoomsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScheduleEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
