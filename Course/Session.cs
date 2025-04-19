@@ -8,6 +8,7 @@ namespace Course
 {
     public class Session
     {
+        static public int id = 0;
         static public byte role = 0;
     }
 }

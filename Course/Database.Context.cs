@@ -27,6 +27,7 @@ namespace Course
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Rooms> Rooms { get; set; }
         public virtual DbSet<Schedule> Schedule { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

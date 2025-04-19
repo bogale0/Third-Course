@@ -26,6 +26,30 @@ namespace Course
             InitializeComponent();
         }
 
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            using (var db = new courseEntities())
+            {
+                var result = db.User.FirstOrDefault(x => x.id == Session.id);
+                if (result == null)
+                {
+                    NavigationService.Navigate(new Authorization());
+                    return;
+                }
+                Session.role = result.role;
+                if (Session.role < 3)
+                {
+                    menuUser.Visibility = Visibility.Collapsed;
+                    menuRooms.Visibility = Visibility.Collapsed;
+                }
+                if (Session.role < 2)
+                {
+                    saveButton.Visibility = Visibility.Collapsed;
+                    table.IsReadOnly = true;
+                }
+            }
+        }
+
         private void DateAndClassChosen(object sender, RoutedEventArgs e)
         {
             int @class = classChosen.SelectedIndex;
@@ -72,7 +96,6 @@ namespace Course
 
         private void ExitAuth(object sender, RoutedEventArgs e)
         {
-            Session.role = 0;
             NavigationService.Navigate(new Authorization());
         }
 

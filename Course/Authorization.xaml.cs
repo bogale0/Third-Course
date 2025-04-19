@@ -29,58 +29,58 @@ namespace Course
         private void SwitchRegAuth(object sender, RoutedEventArgs e)
         {
             auth = !auth;
-            login.Text = "";
-            password.Password = "";
-            enterButton.IsEnabled = false;
             if (auth)
             {
+                header.Content = "Авторизация";
                 enterButton.Content = "Войти";
                 switchButton.Content = "Регистрация";
             }
             else
             {
+                header.Content = "Регистрация";
                 enterButton.Content = "Зарегистрироваться";
                 switchButton.Content = "Авторизация";
             }
         }
 
-        private void ChangedLogOrPass(object sender, KeyEventArgs e)
-        {
-            if (login.Text != "" && password.Password != "")
-            {
-                enterButton.IsEnabled = true;
-            }
-            else
-            {
-                enterButton.IsEnabled = false;
-            }
-        }
-
         private void Enter(object sender, RoutedEventArgs e)
         {
-            using (var db = new courseEntities()) if (auth)
+            if (login.Text == "")
             {
-                var user = db.User.FirstOrDefault(el => el.login == login.Text && el.password == password.Password);
-                if (user == null)
-                {
-                    MessageBox.Show("Неправильный логин или пароль", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-                Session.role = user.role;
-                NavigationService.Navigate(new MainPage());
+                MessageBox.Show("Введите логин", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-            else
+            if (password.Password == "")
             {
-                var user = db.User.FirstOrDefault(el => el.login == login.Text);
-                if (user != null)
+                MessageBox.Show("Введите пароль", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            using (var db = new courseEntities())
+            {
+                if (auth)
                 {
-                    MessageBox.Show("Существует пользователь с таким логином", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
+                    var user = db.User.FirstOrDefault(el => el.login == login.Text && el.password == password.Password);
+                    if (user == null)
+                    {
+                        MessageBox.Show("Неправильный логин или пароль", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    Session.id = user.id;
+                    NavigationService.Navigate(new MainPage());
                 }
-                Session.role = 1;
-                db.User.Add(new User { login = login.Text, password = password.Password, role = Session.role });
-                db.SaveChanges();
-                NavigationService.Navigate(new MainPage());
+                else
+                {
+                    var user = db.User.FirstOrDefault(el => el.login == login.Text);
+                    if (user != null)
+                    {
+                        MessageBox.Show("Существует пользователь с таким логином", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    db.User.Add(new User { login = login.Text, password = password.Password, role = 1 });
+                    db.SaveChanges();
+                    Session.id = db.User.FirstOrDefault(x => x.login == login.Text).id;
+                    NavigationService.Navigate(new MainPage());
+                }
             }
         }
     }

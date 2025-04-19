@@ -12,13 +12,18 @@ namespace Course
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Roles
     {
-        public int id { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-        public byte role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Roles()
+        {
+            this.User = new HashSet<User>();
+        }
     
-        public virtual Roles Roles { get; set; }
+        public byte id { get; set; }
+        public string name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> User { get; set; }
     }
 }

@@ -26,6 +26,15 @@ namespace Course
             InitializeComponent();
         }
 
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (Session.role < 3)
+            {
+                saveButton.Visibility = Visibility.Collapsed;
+                table.IsReadOnly = true;
+            }
+        }
+
         private void SaveChanges(object sender, RoutedEventArgs e)
         {
             using (var db = new courseEntities())

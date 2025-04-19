@@ -9,11 +9,18 @@
       Title="Authorization">
 
     <Grid>
-        <Label Content="Логин" HorizontalAlignment="Left" Margin="302,67,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="login" HorizontalAlignment="Left" Margin="379,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyUp="ChangedLogOrPass"/>
-        <Label Content="Пароль" HorizontalAlignment="Left" Margin="302,143,0,0" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="379,142,0,0" VerticalAlignment="Top" Width="120" KeyUp="ChangedLogOrPass"/>
-        <Button x:Name="enterButton" Content="Войти" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" IsEnabled="False" Click="Enter"/>
-        <Button x:Name="switchButton" Content="Регистрация" HorizontalAlignment="Center" Margin="0,308,0,0" VerticalAlignment="Top" Click="SwitchRegAuth"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label x:Name="header" Content="Авторизация" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,40"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,40">
+                <Label Content="Логин" Margin="0,0,10,0"/>
+                <TextBox x:Name="login" Width="150"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,80">
+                <Label Content="Пароль" Margin="0,0,10,0"/>
+                <PasswordBox x:Name="password" Width="150"/>
+            </StackPanel>
+            <Button x:Name="enterButton" HorizontalAlignment="Center" Content="Войти" Margin="0,0,0,20" Click="Enter"/>
+            <Button x:Name="switchButton" HorizontalAlignment="Center" Content="Регистрация" Click="SwitchRegAuth"/>
+        </StackPanel>
     </Grid>
 </Page>

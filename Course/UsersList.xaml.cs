@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,17 +26,52 @@ namespace Course
         public UsersList()
         {
             InitializeComponent();
-
-        }
-
-        private void SaveChanges(object sender, RoutedEventArgs e)
-        {
-
+            using (var db = new courseEntities())
+            {
+                table.ItemsSource = db.User.Include(x => x.Roles).ToList();
+            }
         }
 
         private void GoBack(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MainPage());
+        }
+
+        private void TableDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var user = (User)table.SelectedItem;
+            if (user.login == "admin")
+            {
+                MessageBox.Show("Невозможно изменить привелегии этого пользователя", "Отказано в доступе", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (++user.role == 4)
+            {
+                user.role = 1;
+            }
+            using (var db = new courseEntities())
+            {
+                user.Roles = db.Roles.FirstOrDefault(x => x.id == user.role);
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            table.Items.Refresh();
+        }
+
+        private void RemoveUser(object sender, RoutedEventArgs e)
+        {
+            var user = (User)table.SelectedItem;
+            if (user.login == "admin")
+            {
+                MessageBox.Show("Невозможно удалить этого пользователя", "Отказано в доступе", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            using (var db = new courseEntities())
+            {
+                db.Entry(user).State = EntityState.Deleted;
+                db.SaveChanges();
+                table.ItemsSource = db.User.Include(x => x.Roles).ToList();
+            }
         }
     }
 }

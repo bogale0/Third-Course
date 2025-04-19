@@ -27,7 +27,7 @@ namespace Course
             {
                 db.User.FirstOrDefault();
             }
-            MainFrame.Navigate(new UsersList());
+            MainFrame.Navigate(new Authorization());
         }
     }
 }
