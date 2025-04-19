@@ -26,11 +26,6 @@ namespace Course
             InitializeComponent();
         }
 
-        private void GoBack(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new MainPage());
-        }
-
         private void SaveChanges(object sender, RoutedEventArgs e)
         {
             using (var db = new courseEntities())
@@ -56,6 +51,11 @@ namespace Course
             {
                 table.ItemsSource = db.Schedule.Where(x => x.day == day && x.@class == @class).ToList();
             }
+        }
+
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainPage());
         }
     }
 }

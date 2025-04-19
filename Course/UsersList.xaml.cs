@@ -16,18 +16,24 @@ using System.Windows.Shapes;
 namespace Course
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для UsersList.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UsersList : Page
     {
-        public MainWindow()
+        public UsersList()
         {
             InitializeComponent();
-            using (var db = new courseEntities())
-            {
-                db.User.FirstOrDefault();
-            }
-            MainFrame.Navigate(new UsersList());
+
+        }
+
+        private void SaveChanges(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainPage());
         }
     }
 }

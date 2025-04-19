@@ -33,9 +33,10 @@
             <Button Content="Выйти" Margin="0,40,0,0" Click="ExitAuth"/>
         </StackPanel>
 
-        <Menu Margin="0,0,411,356">
+        <Menu Margin="0,0,0,356">
             <MenuItem Header="Аудитории" Click="OpenRoomsList"/>
             <MenuItem Header="Расписание" Click="OpenSchedule"/>
+            <MenuItem Header="Пользователи" Click="OpenUserList"/>
             <MenuItem Header="Экспорт"/>
         </Menu>
     </Grid>

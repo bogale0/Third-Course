@@ -26,22 +26,6 @@ namespace Course
             InitializeComponent();
         }
 
-        private void ExitAuth(object sender, RoutedEventArgs e)
-        {
-            Session.role = 0;
-            NavigationService.Navigate(new Authorization());
-        }
-
-        private void OpenRoomsList(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new RoomsList());
-        }
-
-        private void OpenSchedule(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ScheduleEdit());
-        }
-
         private void DateAndClassChosen(object sender, RoutedEventArgs e)
         {
             int @class = classChosen.SelectedIndex;
@@ -84,6 +68,27 @@ namespace Course
                 }
                 db.SaveChanges();
             }
+        }
+
+        private void ExitAuth(object sender, RoutedEventArgs e)
+        {
+            Session.role = 0;
+            NavigationService.Navigate(new Authorization());
+        }
+
+        private void OpenRoomsList(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RoomsList());
+        }
+
+        private void OpenSchedule(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ScheduleEdit());
+        }
+
+        private void OpenUserList(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new UsersList());
         }
     }
 }

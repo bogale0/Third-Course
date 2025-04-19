@@ -72,3 +72,5 @@ C:\Users\aleks\Documents\Files\Курсовая 3\Third-Course\Course\obj\Debug\
 C:\Users\aleks\Documents\Files\Курсовая 3\Third-Course\Course\obj\Debug\Course.pdb
 C:\Users\aleks\Documents\Files\Курсовая 3\Third-Course\Course\obj\Debug\ScheduleEdit.g.cs
 C:\Users\aleks\Documents\Files\Курсовая 3\Third-Course\Course\obj\Debug\ScheduleEdit.baml
+C:\Users\aleks\Documents\Files\Курсовая 3\Third-Course\Course\obj\Debug\UsersList.g.cs
+C:\Users\aleks\Documents\Files\Курсовая 3\Third-Course\Course\obj\Debug\UsersList.baml
